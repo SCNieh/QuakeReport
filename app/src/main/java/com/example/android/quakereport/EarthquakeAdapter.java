@@ -72,6 +72,7 @@ public class EarthquakeAdapter extends ArrayAdapter<EarthquakeData> {
         String timeText;
         timeText = (new SimpleDateFormat("h:mm, a")).format(date.getTime());
         textTime.setText(timeText);
+
         return listItemView;
     }
     public String getMainPlace(String place){

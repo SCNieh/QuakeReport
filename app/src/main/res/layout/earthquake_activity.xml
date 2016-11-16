@@ -1,7 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Layout for a list of earthquakes -->
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/list"
-    android:orientation="vertical"
+<?xml version="1.0" encoding="utf-8"?><!-- Layout for a list of earthquakes -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From: "
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/from_year"
+            style="@style/EditStyle"
+            android:hint="Year"/>
+        <EditText
+            android:id="@+id/from_month"
+            style="@style/EditStyle"
+            android:hint="Month"/>
+        <EditText
+            android:id="@+id/from_day"
+            style="@style/EditStyle"
+            android:hint="Day"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To: "
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/to_year"
+            style="@style/EditStyle"
+            android:hint="Year"/>
+        <EditText
+            android:id="@+id/to_month"
+            style="@style/EditStyle"
+            android:hint="Month"/>
+        <EditText
+            android:id="@+id/to_day"
+            style="@style/EditStyle"
+            android:hint="Day"/>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "search"
+            android:onClick="beginSearch"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"/>
+        <TextView
+            android:id="@+id/progress_connection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/search_button"
+            tools:text="processing" />
+        <TextView
+            android:id="@+id/progress_json"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/progress_connection"
+            android:layout_marginLeft="16dp"
+            tools:text="processing" />
+        <TextView
+            android:id="@+id/progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10%"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/search_button"
+            android:layout_below="@+id/progress_connection"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/item_acquired"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        tools:text="200 items acquired"
+        android:textSize="20sp"
+        android:layout_marginBottom="8dp"/>
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        />
+</LinearLayout>

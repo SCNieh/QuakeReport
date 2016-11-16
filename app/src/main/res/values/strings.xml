@@ -15,4 +15,9 @@
 -->
 <resources>
     <string name="app_name">Quake Report</string>
+    <string name="connection_succeed">Connection Succeed.</string>
+    <string name="json_required">JSON Required.</string>
+    <string name="connection_failed">Connection Failed.</string>
+    <string name="json_required_failed">JSON Required Failed</string>
+
 </resources>
