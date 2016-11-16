@@ -3,7 +3,6 @@ Quake Report App
 
 This app is modified based on the prototype used in the Beginning Udacity Nanodegree - Android Developer.
 
-
 Version 1.0
 ------------
 - This app displays a list of earthquakes in a period of time in the world
