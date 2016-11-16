@@ -39,9 +39,11 @@ public class EarthquakeActivity extends AppCompatActivity {
     private static final Float CONNECTION_FAILED = (float) 201;
     private static final Float JSON_REQUIRED = (float) 202;
     private static final Float JSON_REQUIRED_FAILED = (float) 203;
+    private static final Float NEW_THREAD_START = (float)204;
     private QuakeAsyncTask task = null;
     private Toast toast = null;
     private String userInputUrl;
+    TextView threadView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +65,14 @@ public class EarthquakeActivity extends AppCompatActivity {
         } else {
             task.cancel(true);
             if(task.isCancelled()){
-                if (toast == null) {
-                    toast = Toast.makeText(this, "Thread Canceled", Toast.LENGTH_SHORT);
-                } else {
-                    toast.setText("Thread Cancelded");
-                }
-                toast.show();
+//                if (toast == null) {
+//                    toast = Toast.makeText(this, "Thread Canceled", Toast.LENGTH_SHORT);
+//                } else {
+//                    toast.setText("Thread Cancelded");
+//                }
+//                toast.show();
+                threadView = (TextView) findViewById(R.id.thread_text);
+                threadView.setText("Thread Terminated");
             }
             task = new QuakeAsyncTask();
             task.execute();
@@ -152,7 +156,11 @@ public class EarthquakeActivity extends AppCompatActivity {
             TextView progressText = (TextView) findViewById(R.id.progress_json);
             progressText.setTextColor(ContextCompat.getColor(this, R.color.connectionFailed));
             progressText.setText(R.string.json_required_failed);
-        } else {
+        } else if(value == NEW_THREAD_START){
+            threadView = (TextView) findViewById(R.id.thread_text);
+            threadView.setText("New Thread Start");
+        }
+        else {
             String progress = "Loading list..." + Integer.toString(Math.round(value)) + "%";
             TextView progressText = (TextView) findViewById(R.id.progress_text);
             progressText.setText(progress);
@@ -162,6 +170,7 @@ public class EarthquakeActivity extends AppCompatActivity {
     private class QuakeAsyncTask extends AsyncTask<URL, Float, ArrayList<EarthquakeData>> {
         @Override
         protected ArrayList<EarthquakeData> doInBackground(URL... urls) {
+            publishProgress(NEW_THREAD_START);
             if (userInputUrl == null) {
                 return null;
             }
